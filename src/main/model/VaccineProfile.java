@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,13 +14,13 @@ import java.util.List;
 // Persistence functionality and methods implemented from JsonSerializationDemo
 public class VaccineProfile implements Writable {
     private String profileName;
-    private final LinkedList<Vaccine> vaccineList;
+    private List<Vaccine> vaccineList;
 
     //REQUIRES: Individual's desired profile name (String)
     //EFFECTS: constructs new vaccine profile and empty list of vaccines
     public VaccineProfile(String name) {
         this.profileName = name;
-        vaccineList = new LinkedList<>();
+        vaccineList = new ArrayList<>();
 
     }
 
@@ -45,13 +46,18 @@ public class VaccineProfile implements Writable {
 
     //EFFECTS: returns name (String) of vaccine profile
     public String getVaccineProfileName() {
-        return profileName;
+        return this.profileName;
 
     }
 
     // EFFECTS: returns an unmodifiable list of vaccines in this vaccine profile
     public List<Vaccine> getVaccines() {
         return Collections.unmodifiableList(vaccineList);
+    }
+
+    // EFFECTS: returns number of thingies in this workroom
+    public int numVaccines() {
+        return vaccineList.size();
     }
 
     //REQUIRES: new vaccine profile name (String)

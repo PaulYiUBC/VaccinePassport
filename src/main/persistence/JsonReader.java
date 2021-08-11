@@ -53,7 +53,7 @@ public class JsonReader {
     }
 
     // MODIFIES: vp
-    // EFFECTS: parses vaccines from JSON object and adds them to vaccineprofile
+    // EFFECTS: parses vaccines from JSON object and adds them to vaccine profile
     private void addVaccines(VaccineProfile vp, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("vaccines");
         for (Object json : jsonArray) {
@@ -63,12 +63,12 @@ public class JsonReader {
     }
 
     // MODIFIES: vp
-    // EFFECTS: parses vaccine from JSON object and adds it to vacineprofile
+    // EFFECTS: parses vaccine from JSON object and adds it to vaccine profile
     private void addVaccine(VaccineProfile vp, JSONObject jsonObject) {
-        String vaccineType = jsonObject.getString("vaccine type");
+        String name = jsonObject.getString("name");
         String vaccineDate = jsonObject.getString("vaccine date");
         Boolean booster = jsonObject.getBoolean("booster");
-        Vaccine vaccine = new Vaccine(vaccineType, vaccineDate, booster);
+        Vaccine vaccine = new Vaccine(name, vaccineDate, booster);
         vp.addVaccine(vaccine);
     }
 }

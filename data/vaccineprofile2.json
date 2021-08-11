@@ -1,0 +1,15 @@
+{
+    "Vaccine Profile": [
+        {
+            "date": "2021-05-05",
+            "type": "COVID-19",
+            "booster": true
+        },
+        {
+            "date": "2001-01-01",
+            "type": "MMR",
+            "booster": false
+        }
+    ],
+    "Name": "Your Profile"
+}
