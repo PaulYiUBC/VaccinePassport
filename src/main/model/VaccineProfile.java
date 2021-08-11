@@ -5,7 +5,7 @@ import java.util.LinkedList;
 // Represents a list of vaccines received by an individual with its own profile name
 public class VaccineProfile {
     private String profileName;
-    private LinkedList<Vaccine> vaccineList;
+    private final LinkedList<Vaccine> vaccineList;
 
     //REQUIRES: Individual's desired profile name (String)
     //EFFECTS: instantiates new vaccine profile
