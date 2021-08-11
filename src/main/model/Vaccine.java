@@ -1,8 +1,11 @@
 package model;
 
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents a vaccine record having a vaccine type and date of vaccination
-public class Vaccine {
+public class Vaccine implements Writable {
     private String vaccineType;  // tracks vaccine type
     private String vaccineDate;  // tracks when vaccine was administered
     private boolean booster; // tracks if vaccine requires booster shot
@@ -14,6 +17,15 @@ public class Vaccine {
         vaccineType = newVaccineType;
         vaccineDate = newVaccineDate;
         booster = initialBooster;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("type", vaccineType);
+        json.put("date", vaccineDate);
+        json.put("booster", booster);
+        return json;
     }
 
     //EFFECTS: returns type of vaccine (String)
