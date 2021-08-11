@@ -17,8 +17,8 @@ public class VaccineProfile implements Writable {
 
     //REQUIRES: Individual's desired profile name (String)
     //EFFECTS: constructs new vaccine profile and empty list of vaccines
-    public VaccineProfile(String newProfileName) {
-        profileName = newProfileName;
+    public VaccineProfile(String name) {
+        this.profileName = name;
         vaccineList = new LinkedList<>();
 
     }
@@ -45,7 +45,7 @@ public class VaccineProfile implements Writable {
 
     //EFFECTS: returns name (String) of vaccine profile
     public String getVaccineProfileName() {
-        return this.profileName;
+        return profileName;
 
     }
 
