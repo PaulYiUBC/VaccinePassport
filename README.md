@@ -38,4 +38,8 @@
 - As a user, I want to be able to edit a vaccine record profile (e.g. Name of profile)
 - As a user, I want to check if any vaccines in my profile require a booster shot 
 
+**Phase 2**
+- As a user, I want to be able to save my vaccine profile to file
+- As a user, I want to able to load my vaccine profile from file
+
 
