@@ -1,6 +1,7 @@
 package ui;
 
 // Vaccine Passport application
+// Attribute Reference TellerApp
 public class VaccineApp {
 
     //EFFECTS: runs the vaccine passport application

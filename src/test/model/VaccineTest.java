@@ -43,13 +43,23 @@ class VaccineTest {
 
     @Test
     void testEditVaccineType() {
-        testVaccine5.editVaccineType("TestVaccine5");
-        assertEquals("TestVaccine5", testVaccine4.getVaccineType());
+        //editing vaccine type
+        testVaccine5.editVaccineType("TestVaccine4");
+        assertEquals("TestVaccine4", testVaccine4.getVaccineType());
+
+        //changing vaccine type back to original value
+        testVaccine4.editVaccineType("TestVaccine5");
+        assertEquals("TestVaccine5", testVaccine5.getVaccineType());
 
     }
 
     @Test
     void testEditVaccineDate() {
+        //editing a vaccine date
+        testVaccine6.editVaccineDate("2005-05-05");
+        assertEquals("2005-05-05", testVaccine5.getVaccineDate());
+
+        //changing vaccine date back to original value
         testVaccine6.editVaccineDate("2006-06-06");
         assertEquals("2006-06-06", testVaccine6.getVaccineDate());
     }
