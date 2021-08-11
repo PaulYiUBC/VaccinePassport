@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+import java.io.*;
+
 // Represents a writer that writes JSON representation of vaccine profile to file
 // Persistence functionality and methods implemented from JsonSerializationDemo
 

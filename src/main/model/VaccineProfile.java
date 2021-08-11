@@ -9,7 +9,7 @@ import java.util.LinkedList;
 
 // Represents a list of vaccines received by an individual with its own profile name
 // Persistence functionality and methods implemented from JsonSerializationDemo
-public class VaccineProfile {
+public class VaccineProfile implements Writable {
     private String profileName;
     private final LinkedList<Vaccine> vaccineList;
 
@@ -21,7 +21,7 @@ public class VaccineProfile {
 
     }
 
-    Override
+    @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("Name", profileName);
