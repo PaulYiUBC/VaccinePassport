@@ -46,8 +46,8 @@ public class JsonReader {
 
     // EFFECTS: parses vaccineprofile from JSON object and returns it
     private VaccineProfile parseVaccineProfile(JSONObject jsonObject) {
-        String profileName = jsonObject.getString("profileName");
-        VaccineProfile vp = new VaccineProfile(profileName);
+        String name = jsonObject.getString("name");
+        VaccineProfile vp = new VaccineProfile(name);
         addVaccines(vp, jsonObject);
         return vp;
     }
