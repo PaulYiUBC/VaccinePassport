@@ -11,7 +11,7 @@ public class VaccineProfile {
     //EFFECTS: instantiates new vaccine profile
     public VaccineProfile(String newProfileName) {
         profileName = newProfileName;
-        vaccineList = new LinkedList<>();
+        vaccineList = new LinkedList<Vaccine>();
 
     }
 

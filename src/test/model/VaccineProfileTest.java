@@ -32,6 +32,7 @@ public class VaccineProfileTest {
     }
 
     @Test
+    // Testing getting a profile
     void testGetProfileName() {
         assertEquals("Tester1", testProfile1.getVaccineProfileName());
         assertEquals("Tester2", testProfile2.getVaccineProfileName());
@@ -41,11 +42,13 @@ public class VaccineProfileTest {
     }
 
     @Test
+    // testing adding vaccine to profile
     void testAddVaccine() {
         assertTrue(testProfile1.addVaccine(testVaccine2));
     }
 
     @Test
+    // testing removing vaccine from profile
     void testRemoveVaccine() {
         assertTrue(testProfile2.removeVaccine(testVaccine1));
     }
