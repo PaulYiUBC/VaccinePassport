@@ -5,7 +5,9 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 // Represents a list of vaccines received by an individual with its own profile name
 // Persistence functionality and methods implemented from JsonSerializationDemo
@@ -45,6 +47,11 @@ public class VaccineProfile implements Writable {
     public String getVaccineProfileName() {
         return this.profileName;
 
+    }
+
+    // EFFECTS: returns an unmodifiable list of vaccines in this vaccine profile
+    public List<Vaccine> getVaccines() {
+        return Collections.unmodifiableList(vaccineList);
     }
 
     //REQUIRES: new vaccine profile name (String)

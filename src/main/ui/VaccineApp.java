@@ -2,19 +2,19 @@ package ui;
 
 import model.Vaccine;
 import model.VaccineProfile;
-
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 // Vaccine Passport application
 // UI Functionality and methods are implemented from Teller App
 // Persistence functionality and methods implemented from JsonSerializationDemo
 public class VaccineApp {
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/vaccineprofile.json";
     private Vaccine covid19;
     private Vaccine mmr;
     private VaccineProfile vaccineProfile;
@@ -23,9 +23,7 @@ public class VaccineApp {
     private JsonReader jsonReader;
 
 
-
-
-    //EFFECTS: constructs vaccineprofile and runs the vaccine passport application
+    //EFFECTS: constructs vaccine profile and runs the vaccine passport application
     public VaccineApp() throws FileNotFoundException {
         input = new Scanner(System.in);
         vaccineProfile = new VaccineProfile("Your Profile");
@@ -42,7 +40,7 @@ public class VaccineApp {
         String command = null;
         input = new Scanner(System.in);
 
-        initVaccineProfiles();
+//        initVaccineProfiles();
         initVaccines();
 
         while (keepGoing) {
@@ -72,16 +70,18 @@ public class VaccineApp {
             saveVaccineProfile();
         } else if (command.equals("l")) {
             loadVaccineProfile();
+        } else if (command.equals("p")) {
+            printVaccines();
         } else {
             System.out.println("Selection not valid...");
         }
     }
-
-    //MODIFIES: this
-    //EFFECTS: initializes vaccine profiles
-    private void initVaccineProfiles() {
-        vaccineProfile = new VaccineProfile("You");
-    }
+//
+//    //MODIFIES: this
+//    //EFFECTS: initializes vaccine profiles
+//    private void initVaccineProfiles() {
+//        vaccineProfile = new VaccineProfile("You");
+//    }
 
     //MODIFIES: this
     //EFFECTS: initializes vaccine
@@ -98,7 +98,19 @@ public class VaccineApp {
         System.out.println("\nSelect from:");
         System.out.println("\tv -> add vaccine");
         System.out.println("\tr -> remove vaccine");
+        System.out.println("\ts -> save vaccine profile to file");
+        System.out.println("\tl -> load vaccine profile form file");
+        System.out.println("\tp -> print vaccines");
         System.out.println("\tq -> quit");
+    }
+
+    // EFFECTS: prints all the vaccines in vaccine profile to the console
+    private void printVaccines() {
+        List<Vaccine> vaccines = vaccineProfile.getVaccines();
+
+        for (Vaccine v : vaccines) {
+            System.out.println(v.getVaccineType());
+        }
     }
 
     // EFFECTS: saves the Vaccine Profile to file

@@ -30,7 +30,7 @@ public class JsonWriter {
     }
 
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of workroom to file
+    // EFFECTS: writes JSON representation of vaccine profile to file
     public void write(VaccineProfile vp) {
         JSONObject json = vp.toJson();
         saveToFile(json.toString(TAB));
