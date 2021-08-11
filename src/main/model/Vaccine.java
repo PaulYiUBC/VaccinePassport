@@ -28,14 +28,14 @@ public class Vaccine {
     //REQUIRES: name of new vaccine type
     //MODIFIES: this
     //EFFECTS: changes type of vaccine in cases of needed correction
-    public void editVaccineType(String newType) {
+    public void setVaccineType(String newType) {
         this.vaccineType = newType;
     }
 
     //REQUIRES: date of new vaccination date
     //MODIFIES: this
     //EFFECTS: changes date of vaccination in cases of needed correction
-    public void editVaccineDate(String newDate) {
+    public void setVaccineDate(String newDate) {
         this.vaccineDate = newDate;
 
     }

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class VaccineTest {
 
@@ -32,6 +33,9 @@ class VaccineTest {
         assertEquals("TestVaccine2", testVaccine2.getVaccineType());
         assertEquals("TestVaccine3", testVaccine3.getVaccineType());
         assertEquals("TestVaccine4", testVaccine4.getVaccineType());
+
+        //Testing against wrong test type
+        assertFalse("TestVaccine1" == testVaccine2.getVaccineType());
     }
 
     @Test
@@ -41,28 +45,31 @@ class VaccineTest {
         assertEquals("2002-02-02", testVaccine2.getVaccineDate());
         assertEquals("2003-03-03", testVaccine3.getVaccineDate());
         assertEquals("2004-04-04", testVaccine4.getVaccineDate());
+
+        // Testing against wrong vaccine date
+        assertFalse("2001-01-01" == testVaccine2.getVaccineDate());
     }
 
     @Test
-    void testEditVaccineType() {
+    void testSetVaccineType() {
         //testing editing vaccine type
-        testVaccine5.editVaccineType("TestVaccine4");
+        testVaccine5.setVaccineType("TestVaccine4");
         assertEquals("TestVaccine4", testVaccine4.getVaccineType());
 
         //testing changing vaccine type back to original value
-        testVaccine5.editVaccineType("TestVaccine5");
+        testVaccine5.setVaccineType("TestVaccine5");
         assertEquals("TestVaccine5", testVaccine5.getVaccineType());
 
     }
 
     @Test
-    void testEditVaccineDate() {
+    void testSetVaccineDate() {
         //testing editing a vaccine date
-        testVaccine6.editVaccineDate("2005-05-05");
+        testVaccine6.setVaccineDate("2005-05-05");
         assertEquals("2005-05-05", testVaccine5.getVaccineDate());
 
         //testing changing vaccine date back to original value
-        testVaccine6.editVaccineDate("2006-06-06");
+        testVaccine6.setVaccineDate("2006-06-06");
         assertEquals("2006-06-06", testVaccine6.getVaccineDate());
     }
 

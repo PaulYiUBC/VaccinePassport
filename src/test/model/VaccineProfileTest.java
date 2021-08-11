@@ -3,8 +3,6 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.LinkedList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VaccineProfileTest {
@@ -30,7 +28,10 @@ public class VaccineProfileTest {
 
 
         testProfile1.addVaccine(testVaccine1);
+        testProfile2.addVaccine(testVaccine1);
         testProfile2.addVaccine(testVaccine2);
+        testProfile3.addVaccine(testVaccine1);
+        testProfile3.addVaccine(testVaccine2);
         testProfile3.addVaccine(testVaccine3);
 
     }
@@ -44,6 +45,17 @@ public class VaccineProfileTest {
         assertEquals("Tester4", testProfile4.getVaccineProfileName());
 
     }
+    @Test
+    // Testing editing a profile name
+    void testSetProfileName(){
+        assertEquals("Tester1", testProfile1.getVaccineProfileName() );
+        testProfile1.setProfileName("Parent1");
+        assertEquals("Parent1", testProfile1.getVaccineProfileName());
+        testProfile1.setProfileName("Tester1");
+        assertEquals("Tester1", testProfile1.getVaccineProfileName());
+    }
+
+
 
     @Test
     // testing adding vaccine to profile
@@ -60,13 +72,21 @@ public class VaccineProfileTest {
     void testRemoveVaccine() {
         testProfile1.removeVaccine(testVaccine1);
         assertFalse(testProfile1.containsVaccine(testVaccine1));
+
+        testProfile3.removeVaccine((testVaccine1));
+        assertFalse(testProfile3.containsVaccine(testVaccine1));
+        assertTrue(testProfile3.containsVaccine(testVaccine2));
+        assertTrue(testProfile3.containsVaccine(testVaccine3));
     }
 
     @Test
-    // testing whether a vaccine exists in the profile
+    // testing whether a vaccine element exists in the profile list
     void testContainsVaccine() {
         assertTrue(testProfile1.containsVaccine(testVaccine1));
         assertFalse(testProfile1.containsVaccine(testVaccine2));
+
+        assertTrue(testProfile2.containsVaccine(testVaccine1));
+        assertTrue(testProfile2.containsVaccine(testVaccine2));
     }
 
 }

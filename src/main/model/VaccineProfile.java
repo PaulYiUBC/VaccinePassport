@@ -15,11 +15,17 @@ public class VaccineProfile {
 
     }
 
-    //REQUIRES: Vaccine Profile
     //EFFECTS: returns name (String) of vaccine profile
     public String getVaccineProfileName() {
         return this.profileName;
 
+    }
+
+    //REQUIRES: new vaccine profile name (String)
+    //MODIFIES: this
+    //EFFECTS: edits the vaccine profile name
+    public void setProfileName(String s) {
+        this.profileName = s;
     }
 
     //REQUIRES: vaccine record (Vaccine)
