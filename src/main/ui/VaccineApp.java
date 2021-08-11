@@ -85,6 +85,7 @@ public class VaccineApp {
     //MODIFIES: this
     //EFFECTS: processes adding of vaccine to profile
     private void addVaccineToProfile(Vaccine v) {
+        System.out.println("\nVaccine added to profile");
         yourprofile.addVaccine(v);
 
     }
@@ -93,6 +94,7 @@ public class VaccineApp {
     //MODIFIES: this
     //EFFECTS: processes removal of vaccine to profile
     private void removeVaccineFromProfile(Vaccine v) {
+        System.out.println("\nVaccine removed from profile");
         yourprofile.removeVaccine(v);
 
     }
