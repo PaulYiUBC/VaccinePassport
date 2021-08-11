@@ -14,12 +14,15 @@ public class VaccineProfileTest {
     private Vaccine testVaccine1;
     private Vaccine testVaccine2;
     private Vaccine testVaccine3;
+    private Vaccine testVaccine4;
 
     @BeforeEach
     void runBefore() {
-        testVaccine1 = new Vaccine("TestVaccine1", "2001-01-01");
-        testVaccine2 = new Vaccine("TestVaccine2", "2002-02-02");
-        testVaccine3 = new Vaccine("TestVaccine3", "2003-03-03");
+        testVaccine1 = new Vaccine("TestVaccine1", "2001-01-01", true);
+        testVaccine2 = new Vaccine("TestVaccine2", "2002-02-02", true);
+        testVaccine3 = new Vaccine("TestVaccine3", "2003-03-03", true);
+        testVaccine4 = new Vaccine("TestVaccine4", "2004-04-04", false);
+
 
         testProfile1 = new VaccineProfile("Tester1");
         testProfile2 = new VaccineProfile("Tester2");
@@ -33,11 +36,12 @@ public class VaccineProfileTest {
         testProfile3.addVaccine(testVaccine1);
         testProfile3.addVaccine(testVaccine2);
         testProfile3.addVaccine(testVaccine3);
+        testProfile4.addVaccine(testVaccine4);
 
     }
 
     @Test
-    // Testing getting a profile
+        // Testing getting a profile
     void testGetProfileName() {
         assertEquals("Tester1", testProfile1.getVaccineProfileName());
         assertEquals("Tester2", testProfile2.getVaccineProfileName());
@@ -45,10 +49,11 @@ public class VaccineProfileTest {
         assertEquals("Tester4", testProfile4.getVaccineProfileName());
 
     }
+
     @Test
-    // Testing editing a profile name
-    void testSetProfileName(){
-        assertEquals("Tester1", testProfile1.getVaccineProfileName() );
+        // Testing editing a profile name
+    void testSetProfileName() {
+        assertEquals("Tester1", testProfile1.getVaccineProfileName());
         testProfile1.setProfileName("Parent1");
         assertEquals("Parent1", testProfile1.getVaccineProfileName());
         testProfile1.setProfileName("Tester1");
@@ -56,19 +61,18 @@ public class VaccineProfileTest {
     }
 
 
-
     @Test
-    // testing adding vaccine to profile
+        // testing adding vaccine to profile
     void testAddVaccine() {
-      testProfile1.addVaccine(testVaccine2);
-      assertTrue(testProfile1.containsVaccine(testVaccine1));
-      assertTrue(testProfile1.containsVaccine(testVaccine2));
-      assertFalse(testProfile1.containsVaccine(testVaccine3));
+        testProfile1.addVaccine(testVaccine2);
+        assertTrue(testProfile1.containsVaccine(testVaccine1));
+        assertTrue(testProfile1.containsVaccine(testVaccine2));
+        assertFalse(testProfile1.containsVaccine(testVaccine3));
 
     }
 
     @Test
-    // testing removing vaccine from profile
+        // testing removing vaccine from profile
     void testRemoveVaccine() {
         testProfile1.removeVaccine(testVaccine1);
         assertFalse(testProfile1.containsVaccine(testVaccine1));
@@ -80,7 +84,7 @@ public class VaccineProfileTest {
     }
 
     @Test
-    // testing whether a vaccine element exists in the profile list
+        // testing whether a vaccine element exists in the profile list
     void testContainsVaccine() {
         assertTrue(testProfile1.containsVaccine(testVaccine1));
         assertFalse(testProfile1.containsVaccine(testVaccine2));
@@ -90,4 +94,3 @@ public class VaccineProfileTest {
     }
 
 }
-

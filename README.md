@@ -5,9 +5,9 @@
 ## Phase 1 - Term 2 - Task 2 - Project Information
 
 *What will this application do?*
-- It will keep records of which *vaccines* you have received (type, date)
+- It will keep records of which *vaccines* you have received (type, date, booster shot)
 - It will allow you to organize vaccine *record profiles* for different people in your family
-- (*Optional*) Provide reminders when to receive booster shots
+- (*Optional*) Provide notice if a booster shot is required
 - (*Optional* = Secondary design/implementation goal if primary code is successfully completed)
 
 
@@ -36,5 +36,6 @@
 - As a user, I want to be able to delete a vaccine record profile
 - As a user, I want to be able to edit a vaccine record 
 - As a user, I want to be able to edit a vaccine record profile (e.g. Name of profile)
+- As a user, I want to check if any vaccines in my profile require a booster shot 
 
 

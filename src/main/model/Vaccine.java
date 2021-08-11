@@ -3,15 +3,17 @@ package model;
 
 // Represents a vaccine record having a vaccine type and date of vaccination
 public class Vaccine {
-    private String vaccineType;
-    private String vaccineDate;
+    private String vaccineType;  // tracks vaccine type
+    private String vaccineDate;  // tracks when vaccine was administered
+    private boolean booster; // tracks if vaccine requires booster shot
 
 
     //REQUIRES: vaccine type (String) and date of vaccination (String)
     //EFFECTS: instantiates new vaccine record
-    public Vaccine(String newVaccineType, String newVaccineDate) {
-        this.vaccineType = newVaccineType;
-        this.vaccineDate = newVaccineDate;
+    public Vaccine(String newVaccineType, String newVaccineDate, boolean initialBooster) {
+        vaccineType = newVaccineType;
+        vaccineDate = newVaccineDate;
+        booster = initialBooster;
     }
 
     //EFFECTS: returns type of vaccine (String)
@@ -38,6 +40,18 @@ public class Vaccine {
     public void setVaccineDate(String newDate) {
         this.vaccineDate = newDate;
 
+    }
+
+    //EFFECTS: returns true if vaccine requires a booster shot; otherwise false
+    public boolean checkBooster() {
+        return this.booster;
+    }
+
+    //REQUIRES: true or false parameter value (boolean)
+    //MODIFIES: this
+    //EFFECTS: changes whether booster shot is needed for vaccine
+    public void setBooster(Boolean b) {
+        this.booster = b;
     }
 
 }

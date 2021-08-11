@@ -3,8 +3,7 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 class VaccineTest {
 
@@ -17,12 +16,12 @@ class VaccineTest {
 
     @BeforeEach
     void runBefore() {
-        testVaccine1 = new Vaccine("TestVaccine1", "2001-01-01");
-        testVaccine2 = new Vaccine("TestVaccine2", "2002-02-02");
-        testVaccine3 = new Vaccine("TestVaccine3", "2003-03-03");
-        testVaccine4 = new Vaccine("TestVaccine4", "2004-04-04");
-        testVaccine5 = new Vaccine("TestVaccine5", "2005-05-05");
-        testVaccine6 = new Vaccine("TestVaccine6", "2006-06-06");
+        testVaccine1 = new Vaccine("TestVaccine1", "2001-01-01", true);
+        testVaccine2 = new Vaccine("TestVaccine2", "2002-02-02", true);
+        testVaccine3 = new Vaccine("TestVaccine3", "2003-03-03", true);
+        testVaccine4 = new Vaccine("TestVaccine4", "2004-04-04", false);
+        testVaccine5 = new Vaccine("TestVaccine5", "2005-05-05", false);
+        testVaccine6 = new Vaccine("TestVaccine6", "2006-06-06", false);
 
     }
 
@@ -34,8 +33,7 @@ class VaccineTest {
         assertEquals("TestVaccine3", testVaccine3.getVaccineType());
         assertEquals("TestVaccine4", testVaccine4.getVaccineType());
 
-        //Testing against wrong test type
-        assertFalse("TestVaccine1" == testVaccine2.getVaccineType());
+
     }
 
     @Test
@@ -46,8 +44,6 @@ class VaccineTest {
         assertEquals("2003-03-03", testVaccine3.getVaccineDate());
         assertEquals("2004-04-04", testVaccine4.getVaccineDate());
 
-        // Testing against wrong vaccine date
-        assertFalse("2001-01-01" == testVaccine2.getVaccineDate());
     }
 
     @Test
@@ -73,4 +69,27 @@ class VaccineTest {
         assertEquals("2006-06-06", testVaccine6.getVaccineDate());
     }
 
+    @Test
+    void testCheckBooster() {
+        //testing booster check on vaccine that requires booster shot
+        assertTrue(testVaccine1.checkBooster());
+        //testing booster check on vaccine that does not require a booster shot
+        assertFalse(testVaccine6.checkBooster());
+    }
+
+    @Test
+    void testSetBooster() {
+        //testing setting booster from True to False
+        testVaccine1.setBooster(false);
+        assertFalse(testVaccine1.checkBooster());
+        //testing setting booster from False to True
+        testVaccine4.setBooster(true);
+        assertTrue(testVaccine4.checkBooster());
+        //testing setting booster on already true booster value
+        testVaccine1.setBooster(true);
+        assertTrue(testVaccine1.checkBooster());
+        //testing setting booster on already false booster value
+        testVaccine5.setBooster(false);
+        assertFalse(testVaccine5.checkBooster());
+    }
 }
