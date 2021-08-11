@@ -17,7 +17,7 @@ class VaccineTest {
     @BeforeEach
     void runBefore() {
         testVaccine1 = new Vaccine("TestVaccine1", "2001-01-01");
-        testVaccine2 = new Vaccine("TestVaccine2", "2002-03-03");
+        testVaccine2 = new Vaccine("TestVaccine2", "2002-02-02");
         testVaccine3 = new Vaccine("TestVaccine3", "2003-03-03");
         testVaccine4 = new Vaccine("TestVaccine4", "2004-04-04");
         testVaccine5 = new Vaccine("TestVaccine5", "2005-05-05");
@@ -27,6 +27,7 @@ class VaccineTest {
 
     @Test
     void testGetVaccineType() {
+        // Testing getting the vaccine type for different vaccines
         assertEquals("TestVaccine1", testVaccine1.getVaccineType());
         assertEquals("TestVaccine2", testVaccine2.getVaccineType());
         assertEquals("TestVaccine3", testVaccine3.getVaccineType());
@@ -35,6 +36,7 @@ class VaccineTest {
 
     @Test
     void testGetVaccineDate() {
+        // Testing getting vaccine date for different vaccines
         assertEquals("2001-01-01", testVaccine1.getVaccineDate());
         assertEquals("2002-02-02", testVaccine2.getVaccineDate());
         assertEquals("2003-03-03", testVaccine3.getVaccineDate());
@@ -43,23 +45,23 @@ class VaccineTest {
 
     @Test
     void testEditVaccineType() {
-        //editing vaccine type
+        //testing editing vaccine type
         testVaccine5.editVaccineType("TestVaccine4");
         assertEquals("TestVaccine4", testVaccine4.getVaccineType());
 
-        //changing vaccine type back to original value
-        testVaccine4.editVaccineType("TestVaccine5");
+        //testing changing vaccine type back to original value
+        testVaccine5.editVaccineType("TestVaccine5");
         assertEquals("TestVaccine5", testVaccine5.getVaccineType());
 
     }
 
     @Test
     void testEditVaccineDate() {
-        //editing a vaccine date
+        //testing editing a vaccine date
         testVaccine6.editVaccineDate("2005-05-05");
         assertEquals("2005-05-05", testVaccine5.getVaccineDate());
 
-        //changing vaccine date back to original value
+        //testing changing vaccine date back to original value
         testVaccine6.editVaccineDate("2006-06-06");
         assertEquals("2006-06-06", testVaccine6.getVaccineDate());
     }

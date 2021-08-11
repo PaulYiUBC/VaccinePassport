@@ -11,32 +11,37 @@ public class VaccineProfile {
     //EFFECTS: instantiates new vaccine profile
     public VaccineProfile(String newProfileName) {
         profileName = newProfileName;
-        vaccineList = new LinkedList<Vaccine>();
+        vaccineList = new LinkedList<>();
 
     }
 
     //REQUIRES: Vaccine Profile
     //EFFECTS: returns name (String) of vaccine profile
     public String getVaccineProfileName() {
-        return profileName;
+        return this.profileName;
 
     }
 
     //REQUIRES: vaccine record (Vaccine)
     //MODIFIES: this
-    //EFFECTS: adds vaccine record to vaccination profile and returns true; otherwise false
-    public boolean addVaccine(Vaccine newVaccine) {
+    //EFFECTS: adds vaccine record to vaccination profile
+    public void addVaccine(Vaccine newVaccine) {
         vaccineList.add(newVaccine);
-        return true;
 
     }
 
     //REQUIRES: vaccine record (Vaccine)
     //MODIFIES: this
-    //EFFECTS: removes vaccine record from vaccination profile and return true; otherwise false if not found
-    public boolean removeVaccine(Vaccine removedVaccine) {
+    //EFFECTS: removes vaccine record from vaccination profile
+    public void removeVaccine(Vaccine removedVaccine) {
         vaccineList.remove(removedVaccine);
-        return true;
+
+    }
+
+    //Requires: vaccine record (Vaccine)
+    //EFFECTS: returns true if given vaccine record element is in vaccine profile
+    public boolean containsVaccine(Vaccine v) {
+        return this.vaccineList.contains(v);
 
     }
 
