@@ -1,10 +1,13 @@
 package ui;
 
+import javafx.embed.swing.JFXPanel;
 import model.Vaccine;
 import model.VaccineProfile;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import javax.sound.sampled.*;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -17,17 +20,21 @@ import java.util.Scanner;
 // (https://stackoverflow.com/questions/26305/how-can-i-play-sound-in-java)
 public class VaccineApp {
     private static final String JSON_STORE = "./data/vaccineprofile.json";
+
+    //EFFECTS: initializes JavaFX to enable play sound functionality
+    static {
+        JFXPanel fxPanel = new JFXPanel();
+    }
+
     private Vaccine covid19;
     private Vaccine mmr;
     private Vaccine tetanus;
     private Vaccine shingles;
     private VaccineProfile vaccineProfile;
     private Scanner input;
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
+    private final JsonWriter jsonWriter;
+    private final JsonReader jsonReader;
     private GUI gui;
-
-
 
     //EFFECTS: constructs vaccine profile and runs the vaccine passport application
     public VaccineApp() throws FileNotFoundException {
@@ -41,21 +48,36 @@ public class VaccineApp {
             vaccineProfile.addVaccine(v);
         }
 
-//        runVaccineApp();
-
     }
 
+    //EFFECTS: plays sound effect in data folder
+    private static void playSound(String soundFile) throws UnsupportedAudioFileException,
+            IOException, LineUnavailableException {
+        File f = new File(soundFile);
+        AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioIn);
+        clip.start();
+    }
+
+    //REQUIRES: boolean
+    //EFFECTS: returns string of Yes or No given true or false boolean, respectively
+    public static String translate(boolean trueOrFalse) {
+        return trueOrFalse ? "Yes" : "No";
+    }
+
+    //REQUIRE: GUI
+    //EFFECTS: Established bi-directional relationship with GUI class to construct graphical interface for vaccine app
     public void setGUI(GUI gui) {
         this.gui = gui;
     }
 
-
-    public void filterBoosterVaccines() {
+    // EFFECTS: filters
+    public void filterBoosterVaccines() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        playSound("./data/positive-beep.wav");
         gui.updateLabel(vaccineProfile.filterProfile());
+
     }
-
-
-
 
     //MODIFIES: this
     //EFFECTS: processes user input
@@ -81,7 +103,6 @@ public class VaccineApp {
 
         System.out.println("\nGoodbye!");
     }
-
 
     //MODIFIES: this
     //EFFECTS: processes user command
@@ -143,12 +164,6 @@ public class VaccineApp {
                     (v.getVaccineType() + " " + v.getVaccineDate() + " Need Booster? " + translate(v.checkBooster()));
             System.out.println(toprint);
         }
-    }
-
-    //REQUIRES: boolean
-    //EFFECTS: returns string of Yes or No given true or false boolean, respectively
-    public static String translate(boolean trueOrFalse) {
-        return trueOrFalse ? "Yes" : "No";
     }
 
     // EFFECTS: saves the Vaccine Profile to file
@@ -236,28 +251,4 @@ public class VaccineApp {
     }
 
 
-//    //MODIFIES: this
-//    //EFFECTS: processes creation of new vaccine profile
-//    private void doCreateProfile() {
-//
-//    }
-
-//    //MODIFIES: this
-//    //EFFECTS: shows list of vaccine in selected vaccine profile
-//    private void displayVaccines() {
-//
-//    }
-
-//    //MODIFIES: this
-//    //EFFECTS: deletes vaccine profile
-//    private void deleteVaccineProfile() {
-//
-//    }
-
-
-//    //MODIFIES: this
-//    //EFFECTS: edits vaccine from profile
-//    private void editVaccineFromProfile() {
-//
-//    }
 }

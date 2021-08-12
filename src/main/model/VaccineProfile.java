@@ -22,6 +22,8 @@ public class VaccineProfile implements Writable {
 
     }
 
+
+    //EFFECTS: filters vaccine list and returns a sublist of vaccines that require a booster shot
     public ArrayList<Vaccine> filterProfile() {
         ArrayList<Vaccine> subList = new ArrayList<Vaccine>();
         for (Vaccine v : vaccineList) {
