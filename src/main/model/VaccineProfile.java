@@ -24,7 +24,7 @@ public class VaccineProfile implements Writable {
 
 
     //EFFECTS: filters vaccine list and returns a sublist of vaccines that require a booster shot
-    public ArrayList<Vaccine> filterProfile() {
+    public ArrayList<Vaccine> filterBoosterProfile() {
         ArrayList<Vaccine> subList = new ArrayList<Vaccine>();
         for (Vaccine v : vaccineList) {
             if (v.checkBooster()) {
@@ -32,6 +32,11 @@ public class VaccineProfile implements Writable {
             }
         }
         return subList;
+    }
+
+    //EFFECTS: filters vaccine list and returns a sublist of vaccines that require a booster shot
+    public ArrayList<Vaccine> filterNormalProfile() {
+        return vaccineList;
     }
 
     @Override

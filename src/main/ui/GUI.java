@@ -1,16 +1,15 @@
 package ui;
 
 
-import javafx.embed.swing.JFXPanel;
 import model.Vaccine;
 
-import javax.sound.sampled.*;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -30,16 +29,21 @@ public class GUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(600, 600));
         ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
-        JButton btn1 = new JButton("Show Booster Vaccines");
-//        btn.setActionCommand("myButton");
-        btn1.addActionListener(this);
-        label = new JLabel("Status");
+        setupBtn1(); // show booster vaccine(s) button
+        setupBtn2(); // add covid-19 vaccine button
+        setupBtn3(); // add mmr vaccine button
+        setupBtn4(); // add tentanus vaccine button
+        setupBtn5(); // add shingles vaccine button
+        setupBtn6(); // add chickenpox vaccine button
+        setupBtn7(); // show call vaccine(s) button
+//        setupBtn8(); // save profile button
+//        setupBtn9(); // load profile button
+
+        label = new JLabel("Status", SwingConstants.CENTER);
         field = new JTextArea();
         field.setPreferredSize(new Dimension(20, 20));
-        field.setBounds(20, 20, 100, 150);
+        field.setBounds(20, 20, 100, 400);
         add(field);
-        add(btn1);
-        btn1.setBounds(140, 20, 200, 20);
         add(label);
         pack();
         setLocationRelativeTo(null);
@@ -47,36 +51,142 @@ public class GUI extends JFrame implements ActionListener {
         setResizable(false);
     }
 
+    // EFFECTS: Constructs button 1 - Show Booster Vacines
+    // COMMENT: made this helper function to fix checkstyle limit of 27 lines in GUI  method
+    public void setupBtn1() {
+        JButton btn1 = new JButton("Show Booster Vaccines");
+        btn1.setActionCommand("Show Booster Vaccines");
+        btn1.addActionListener(this);
+        add(btn1);
+        btn1.setBounds(140, 20, 200, 20);
+    }
+
+    // EFFECTS: Constructs button 2 - Add covid vaccine
+    // COMMENT: made this helper function to fix checkstyle limit of 27 lines in GUI  method
+    public void setupBtn2() {
+        JButton btn2 = new JButton("Add COVID-19 Vaccine");
+        btn2.setActionCommand("Add COVID-19 Vaccine");
+        btn2.addActionListener(this);
+        add(btn2);
+        btn2.setBounds(140, 40, 200, 20);
+    }
+
+    // EFFECTS: Constructs button 3 - Add mmr vaccine
+    // COMMENT: made this helper function to fix checkstyle limit of 27 lines in GUI  method
+    public void setupBtn3() {
+        JButton btn3 = new JButton("Add MMR Vaccine");
+        btn3.setActionCommand("Add MMR Vaccine");
+        btn3.addActionListener(this);
+        add(btn3);
+        btn3.setBounds(140, 60, 200, 20);
+    }
+
+    // EFFECTS: Constructs button 4 - Add tetanus vaccine
+    // COMMENT: made this helper function to fix checkstyle limit of 27 lines in GUI  method
+    public void setupBtn4() {
+        JButton btn3 = new JButton("Add Tetanus Vaccine");
+        btn3.setActionCommand("Add Tetanus Vaccine");
+        btn3.addActionListener(this);
+        add(btn3);
+        btn3.setBounds(140, 80, 200, 20);
+    }
+
+    // EFFECTS: Constructs button 5 - Add shingles vaccine
+    // COMMENT: made this helper function to fix checkstyle limit of 27 lines in GUI  method
+    public void setupBtn5() {
+        JButton btn3 = new JButton("Add Shingles Vaccine");
+        btn3.setActionCommand("Add Shingles Vaccine");
+        btn3.addActionListener(this);
+        add(btn3);
+        btn3.setBounds(140, 100, 200, 20);
+    }
+
+    // EFFECTS: Constructs button 6 - Add chickenpox vaccine
+    // COMMENT: made this helper function to fix checkstyle limit of 27 lines in GUI  method
+    public void setupBtn6() {
+        JButton btn3 = new JButton("Add Chickenpox Vaccine");
+        btn3.setActionCommand("Add MMR Vaccine");
+        btn3.addActionListener(this);
+        add(btn3);
+        btn3.setBounds(140, 120, 200, 20);
+    }
+
+    // EFFECTS: Constructs button 7 - show all vaccines
+    // COMMENT: made this helper function to fix checkstyle limit of 27 lines in GUI  method
+    public void setupBtn7() {
+        JButton btn3 = new JButton("Show all vaccines");
+        btn3.setActionCommand("Show all vaccines");
+        btn3.addActionListener(this);
+        add(btn3);
+        btn3.setBounds(140, 140, 200, 20);
+    }
+
     //REQUIRES: Action Event
-    //EFFECTS: This is the method that is called when the the JButton btn is clicked
+    //EFFECTS: This is the method that is called when the the JButtons are clicked
+    // function is to filter list of vaccines and show ones needing boosters
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Show Booster Vaccines")) {
-            try {
-                app.filterBoosterVaccines();
-            } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-                unsupportedAudioFileException.printStackTrace();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            } catch (LineUnavailableException lineUnavailableException) {
-                lineUnavailableException.printStackTrace();
-            }
-            label.setText("Here are the vaccines that need booster shots");
+            actionCommandBooster();
+
+        } else if ((e.getActionCommand().equals("Add COVID-19 Vaccine"))) {
+            actionCommandCovid();
+        } else if ((e.getActionCommand().equals("Add MMR Vaccine"))) {
+            app.addMmrVaccine();
+            label.setText("Status: MMR Vaccine added to your profile");
+        } else if ((e.getActionCommand().equals("Add Tetanus Vaccine"))) {
+            app.addTetanusVaccine();
+            label.setText("Status: Tetanus Vaccine added to your profile");
+        } else if ((e.getActionCommand().equals("Add Shingles Vaccine"))) {
+            app.addShinglesVaccine();
+            label.setText("Status: Shingles Vaccine added to your profile");
+        } else if ((e.getActionCommand().equals("Add Chickenpox Vaccine"))) {
+            app.addChickenpoxVaccine();
+            label.setText("Status: Chickenpox Vaccine added to your profile");
+        } else if ((e.getActionCommand().equals("Show all vaccines"))) {
+            app.showAllVaccines();
+            label.setText("Status: All vaccines in profile shown");
+        }
+
+    }
+
+    //EFFECT: implements action for show booster button
+    // COMMENT: Helper function to reduce max line limit checkstyle error
+    public void actionCommandBooster() {
+        try {
+            app.filterBoosterVaccines();
+            label.setText("Status: Here are the vaccines that need booster shots");
+        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+            unsupportedAudioFileException.printStackTrace();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        } catch (LineUnavailableException lineUnavailableException) {
+            lineUnavailableException.printStackTrace();
         }
     }
+
+    //EFFECT: implements action for add covid button
+    // COMMENT: Helper function to reduce max line limit checkstyle error
+    public void actionCommandCovid() {
+        app.addCovidVaccine();
+        label.setText("Status: COVID-19 Vaccine added to your profile");
+    }
+
 
     //REQUIRES: Vaccine app
     //EFFECTS: sets up the functionality of the vaccine app to use in the graphical interface
     public void setApp(VaccineApp app) {
         this.app = app;
+
     }
 
+    //REQUIRES: vaccine profile
     //EFFECTS: provides updated list of vaccine names in profile
-    public void updateLabel(ArrayList<Vaccine> vp) {
-        String msg = "";
+    public void updateField(ArrayList<Vaccine> vp) {
+        String updatedList = "";
         for (Vaccine v : vp) {
-            msg += "\n" + v.getVaccineType();
+            updatedList += "\n" + v.getVaccineType();
         }
-        field.setText(msg);
+        field.setText(updatedList);
     }
 
 
