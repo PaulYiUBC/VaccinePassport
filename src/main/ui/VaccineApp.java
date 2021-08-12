@@ -17,6 +17,7 @@ public class VaccineApp {
     private static final String JSON_STORE = "./data/vaccineprofile.json";
     private Vaccine covid19;
     private Vaccine mmr;
+    private Vaccine tetanus;
     private VaccineProfile vaccineProfile;
     private Scanner input;
     private JsonWriter jsonWriter;
@@ -76,18 +77,22 @@ public class VaccineApp {
             System.out.println("Selection not valid...");
         }
     }
-//
-//    //MODIFIES: this
-//    //EFFECTS: initializes vaccine profiles
-//    private void initVaccineProfiles() {
-//        vaccineProfile = new VaccineProfile("You");
-//    }
+
+    //REQUIRES: Vaccine parameter
+    //MODIFIES: this
+    //EFFECTS: processes removal of vaccine to profile
+    private void removeVaccineFromProfile(Vaccine v) {
+        System.out.println("\nVaccine removed from profile");
+        vaccineProfile.removeVaccine(v);
+
+    }
 
     //MODIFIES: this
     //EFFECTS: initializes vaccine
     private void initVaccines() {
         covid19 = new Vaccine("COVID-19", "2021-05-05", true);
         mmr = new Vaccine("MMR", "2001-01-01", false);
+        tetanus = new Vaccine("Tetanus", "1999-09-09", true);
         input = new Scanner(System.in);
     }
 
@@ -109,8 +114,16 @@ public class VaccineApp {
         List<Vaccine> vaccines = vaccineProfile.getVaccines();
 
         for (Vaccine v : vaccines) {
-            System.out.println(v.getVaccineType());
+            String toprint =
+                    (v.getVaccineType() + " " + v.getVaccineDate() + " Need Booster? " + translate(v.checkBooster()));
+            System.out.println(toprint);
         }
+    }
+
+    //REQUIRES: boolean
+    //EFFECTS: returns string of Yes or No given true or false boolean, respectively
+    public static String translate(boolean trueOrFalse) {
+        return trueOrFalse ? "Yes" : "No";
     }
 
     // EFFECTS: saves the Vaccine Profile to file
@@ -119,7 +132,7 @@ public class VaccineApp {
             jsonWriter.open();
             jsonWriter.write(vaccineProfile);
             jsonWriter.close();
-            System.out.println("Saved " + vaccineProfile.getVaccineProfileName() + " to " + JSON_STORE);
+            System.out.println("Saved " + vaccineProfile.getProfileName() + " to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
@@ -130,7 +143,7 @@ public class VaccineApp {
     private void loadVaccineProfile() {
         try {
             vaccineProfile = jsonReader.read();
-            System.out.println("Loaded " + vaccineProfile.getVaccineProfileName() + " from " + JSON_STORE);
+            System.out.println("Loaded " + vaccineProfile.getProfileName() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
@@ -145,49 +158,49 @@ public class VaccineApp {
 
     }
 
-    //REQUIRES: Vaccine parameter
-    //MODIFIES: this
-    //EFFECTS: processes removal of vaccine to profile
-    private void removeVaccineFromProfile(Vaccine v) {
-        System.out.println("\nVaccine removed from profile");
-        vaccineProfile.removeVaccine(v);
 
-    }
-
-    // EFFECTS: prompts user to select COVID-19 OR MMR vaccine to add to profile
+    // EFFECTS: prompts user to select COVID-19 OR MMR OR Tetanus vaccine to add to profile
     private void selectVaccine() {
         String selection = "";  // force entry into loop
 
-        while (!(selection.equals("c") || selection.equals("m"))) {
-            System.out.println("c for COVID-19");
-            System.out.println("m for MMR");
-            selection = input.next();
-            selection = selection.toLowerCase();
-        }
+        System.out.println("c for COVID-19 Vaccine");
+        System.out.println("m for MMR Vaccine");
+        System.out.println("t for Tetanus Vaccine");
+        selection = input.next();
+        selection = selection.toLowerCase();
+
 
         if (selection.equals("c")) {
             addVaccineToProfile(covid19);
-        } else {
+        }
+        if (selection.equals("m")) {
             addVaccineToProfile(mmr);
+        }
+        if (selection.equals("t")) {
+            addVaccineToProfile(tetanus);
         }
     }
 
-    // EFFECTS: prompts user to select COVID-19 OR MMR vaccine to add to profile
+    // EFFECTS: prompts user to select COVID-19 OR MMR OR Tetanus vaccine to add to profile
     private void removeVaccine() {
         String selection = "";  // force entry into loop
 
-        while (!(selection.equals("c") || selection.equals("m"))) {
-            System.out.println("c for COVID-19");
-            System.out.println("m for MMR");
-            selection = input.next();
-            selection = selection.toLowerCase();
-        }
+        System.out.println("c for COVID-19");
+        System.out.println("m for MMR");
+        System.out.println("t for Tetanus Vaccine");
+        selection = input.next();
+        selection = selection.toLowerCase();
 
         if (selection.equals("c")) {
             removeVaccineFromProfile(covid19);
-        } else {
+        }
+        if (selection.equals("m")) {
             removeVaccineFromProfile(mmr);
         }
+        if (selection.equals("t")) {
+            removeVaccineFromProfile(tetanus);
+        }
+
     }
 
 

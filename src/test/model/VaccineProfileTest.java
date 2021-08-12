@@ -43,21 +43,21 @@ public class VaccineProfileTest {
     @Test
         // Testing getting a profile
     void testGetProfileName() {
-        assertEquals("Tester1", testProfile1.getVaccineProfileName());
-        assertEquals("Tester2", testProfile2.getVaccineProfileName());
-        assertEquals("Tester3", testProfile3.getVaccineProfileName());
-        assertEquals("Tester4", testProfile4.getVaccineProfileName());
+        assertEquals("Tester1", testProfile1.getProfileName());
+        assertEquals("Tester2", testProfile2.getProfileName());
+        assertEquals("Tester3", testProfile3.getProfileName());
+        assertEquals("Tester4", testProfile4.getProfileName());
 
     }
 
     @Test
         // Testing editing a profile name
     void testSetProfileName() {
-        assertEquals("Tester1", testProfile1.getVaccineProfileName());
+        assertEquals("Tester1", testProfile1.getProfileName());
         testProfile1.setProfileName("Parent1");
-        assertEquals("Parent1", testProfile1.getVaccineProfileName());
+        assertEquals("Parent1", testProfile1.getProfileName());
         testProfile1.setProfileName("Tester1");
-        assertEquals("Tester1", testProfile1.getVaccineProfileName());
+        assertEquals("Tester1", testProfile1.getProfileName());
     }
 
 

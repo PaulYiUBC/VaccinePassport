@@ -3,8 +3,7 @@ package persistence;
 
 import model.Vaccine;
 import model.VaccineProfile;
-import org.json.JSONArray;
-import org.json.JSONObject;
+
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -44,7 +43,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses vaccineprofile from JSON object and returns it
+    // EFFECTS: parses vaccine profile from JSON object and returns it
     private VaccineProfile parseVaccineProfile(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         VaccineProfile vp = new VaccineProfile(name);
@@ -55,7 +54,7 @@ public class JsonReader {
     // MODIFIES: vp
     // EFFECTS: parses vaccines from JSON object and adds them to vaccine profile
     private void addVaccines(VaccineProfile vp, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("vaccines");
+        JSONArray jsonArray = jsonObject.getJSONArray("vaccineList");
         for (Object json : jsonArray) {
             JSONObject nextVaccine = (JSONObject) json;
             addVaccine(vp, nextVaccine);
@@ -65,8 +64,8 @@ public class JsonReader {
     // MODIFIES: vp
     // EFFECTS: parses vaccine from JSON object and adds it to vaccine profile
     private void addVaccine(VaccineProfile vp, JSONObject jsonObject) {
-        String name = jsonObject.getString("name");
-        String vaccineDate = jsonObject.getString("vaccine date");
+        String name = jsonObject.getString("type");
+        String vaccineDate = jsonObject.getString("date");
         Boolean booster = jsonObject.getBoolean("booster");
         Vaccine vaccine = new Vaccine(name, vaccineDate, booster);
         vp.addVaccine(vaccine);

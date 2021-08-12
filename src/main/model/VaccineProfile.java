@@ -13,13 +13,13 @@ import java.util.List;
 // Represents a list of vaccines received by an individual with its own profile name
 // Persistence functionality and methods implemented from JsonSerializationDemo
 public class VaccineProfile implements Writable {
-    private String profileName;
-    private List<Vaccine> vaccineList;
+    private String name;
+    private ArrayList<Vaccine> vaccineList;
 
     //REQUIRES: Individual's desired profile name (String)
     //EFFECTS: constructs new vaccine profile and empty list of vaccines
     public VaccineProfile(String name) {
-        this.profileName = name;
+        this.name = name;
         vaccineList = new ArrayList<>();
 
     }
@@ -27,8 +27,8 @@ public class VaccineProfile implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("Name", profileName);
-        json.put("Vaccine Profile", vaccinesToJson());
+        json.put("name", name);
+        json.put("vaccineList", vaccinesToJson());
         return json;
     }
 
@@ -45,8 +45,8 @@ public class VaccineProfile implements Writable {
 
 
     //EFFECTS: returns name (String) of vaccine profile
-    public String getVaccineProfileName() {
-        return this.profileName;
+    public String getProfileName() {
+        return name;
 
     }
 
@@ -64,7 +64,7 @@ public class VaccineProfile implements Writable {
     //MODIFIES: this
     //EFFECTS: edits the vaccine profile name
     public void setProfileName(String s) {
-        this.profileName = s;
+        this.name = s;
     }
 
     //REQUIRES: vaccine record (Vaccine)

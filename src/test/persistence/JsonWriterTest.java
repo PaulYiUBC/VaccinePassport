@@ -40,7 +40,7 @@ class JsonWriterTest extends JsonTest {
 
             JsonReader reader = new JsonReader("./data/testWriterEmptyWorkroom.json");
             vp = reader.read();
-            assertEquals("My vaccine profile", vp.getVaccineProfileName());
+            assertEquals("My vaccine profile", vp.getProfileName());
             assertEquals(0, vp.numVaccines());
         } catch (IOException e) {
             fail("Exception should not have been thrown");
@@ -60,7 +60,7 @@ class JsonWriterTest extends JsonTest {
 
             JsonReader reader = new JsonReader("./data/testWriterGeneralWorkroom.json");
             vp = reader.read();
-            assertEquals("My vaccine profile", vp.getVaccineProfileName());
+            assertEquals("My vaccine profile", vp.getProfileName());
             List<Vaccine> vaccines = vp.getVaccines();
             assertEquals(2, vaccines.size());
             checkVaccine("COVID-19", "2021-01-01", true,  vaccines.get(0));

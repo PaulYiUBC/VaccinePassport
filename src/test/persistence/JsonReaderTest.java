@@ -28,7 +28,7 @@ class JsonReaderTest extends JsonTest {
         JsonReader reader = new JsonReader("./data/testReaderEmptyWorkRoom.json");
         try {
             VaccineProfile vp = reader.read();
-            assertEquals("My vaccine profile", vp.getVaccineProfileName());
+            assertEquals("Your Profile", vp.getProfileName());
             assertEquals(0, vp.numVaccines());
         } catch (IOException e) {
             fail("Couldn't read from file");
@@ -40,7 +40,7 @@ class JsonReaderTest extends JsonTest {
         JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
         try {
             VaccineProfile vp = reader.read();
-            assertEquals("My vaccine profile", vp.getVaccineProfileName());
+            assertEquals("Your Profile", vp.getProfileName());
             List<Vaccine> vaccines = vp.getVaccines();
             assertEquals(2, vaccines.size());
             checkVaccine("COVID_19", "2021-01-01", true, vaccines.get(0));
