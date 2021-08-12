@@ -11,8 +11,10 @@ import java.util.List;
 import java.util.Scanner;
 
 // Vaccine Passport application
-// UI Functionality and methods are implemented from Teller App
+// Console UI Functionality and methods are implemented from Teller App
 // Persistence functionality and methods implemented from JsonSerializationDemo
+// PlaySound implemented from Stackoverflow - Link:
+// (https://stackoverflow.com/questions/26305/how-can-i-play-sound-in-java)
 public class VaccineApp {
     private static final String JSON_STORE = "./data/vaccineprofile.json";
     private Vaccine covid19;

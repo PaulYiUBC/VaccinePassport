@@ -10,8 +10,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-// GUI functionality and methods implemented from Phase 3 cited example:
+// GUI functionality and methods implemented from Phase 3 project page examples/sources:
 // Link (https://stackoverflow.com/questions/6578205/swing-jlabel-text-change-on-the-running-application)
+// Link (https://docs.oracle.com/javase/tutorial/uiswing/examples/components/index.html)
+// Link (https://docs.oracle.com/javase/tutorial/uiswing/examples/zipfiles/components-TextSamplerDemoProject.zip)
 public class GUI extends JFrame {
     private VaccineApp app;
     private final JLabel label;
