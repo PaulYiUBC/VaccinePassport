@@ -1,5 +1,5 @@
 {
-    "Vaccine Profile": [
+    "vaccineList": [
         {
             "date": "2021-05-05",
             "type": "COVID-19",
@@ -11,5 +11,5 @@
             "booster": false
         }
     ],
-    "Name": "Your Profile"
+    "name": "Your Profile"
 }
