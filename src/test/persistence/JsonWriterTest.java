@@ -3,7 +3,6 @@ package persistence;
 
 import model.Vaccine;
 import model.VaccineProfile;
-
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -51,7 +50,7 @@ class JsonWriterTest extends JsonTest {
     void testWriterGeneralWorkroom() {
         try {
             VaccineProfile vp = new VaccineProfile("Your Profile");
-            vp.addVaccine(new Vaccine("COVID-19", "2021-05-05", true ));
+            vp.addVaccine(new Vaccine("COVID-19", "2021-05-05", true));
             vp.addVaccine(new Vaccine("MMR", "2001-01-01", false));
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralWorkroom.json");
             writer.open();
@@ -63,7 +62,7 @@ class JsonWriterTest extends JsonTest {
             assertEquals("Your Profile", vp.getProfileName());
             List<Vaccine> vaccines = vp.getVaccines();
             assertEquals(2, vaccines.size());
-            checkVaccine("COVID-19", "2021-05-05", true,  vaccines.get(0));
+            checkVaccine("COVID-19", "2021-05-05", true, vaccines.get(0));
             checkVaccine("MMR", "2001-01-01", false, vaccines.get(1));
 
         } catch (IOException e) {
