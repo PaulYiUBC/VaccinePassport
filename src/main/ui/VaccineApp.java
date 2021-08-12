@@ -23,6 +23,8 @@ public class VaccineApp {
     private Scanner input;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
+    private GUI gui;
+
 
 
     //EFFECTS: constructs vaccine profile and runs the vaccine passport application
@@ -31,9 +33,27 @@ public class VaccineApp {
         vaccineProfile = new VaccineProfile("Your Profile");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
-        runVaccineApp();
+
+        for (int i = 0; i < 10; i += 2) {
+            Vaccine v = new Vaccine("Chickenpox", "2021-01-01", true);
+            vaccineProfile.addVaccine(v);
+        }
+
+//        runVaccineApp();
 
     }
+
+    public void setGUI(GUI gui) {
+        this.gui = gui;
+    }
+
+
+    public void filterBoosterVaccines() {
+        gui.updateLabel(vaccineProfile.filterProfile());
+    }
+
+
+
 
     //MODIFIES: this
     //EFFECTS: processes user input

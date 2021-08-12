@@ -22,6 +22,16 @@ public class VaccineProfile implements Writable {
 
     }
 
+    public ArrayList<Vaccine> filterProfile() {
+        ArrayList<Vaccine> subList = new ArrayList<Vaccine>();
+        for (Vaccine v : vaccineList) {
+            if (v.checkBooster()) {
+                subList.add(v);
+            }
+        }
+        return subList;
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

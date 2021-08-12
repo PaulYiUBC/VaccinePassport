@@ -5,7 +5,10 @@ import java.io.FileNotFoundException;
 public class Main {
     public static void main(String[] args) {
         try {
-            new VaccineApp();
+            VaccineApp app = new VaccineApp();
+            GUI gui = new GUI();
+            app.setGUI(gui);
+            gui.setApp(app);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to run application: file not found");
         }
