@@ -48,10 +48,10 @@ public class VaccineApp {
 
         // EFFECTS: fill vaccine profile with five test vaccines
         // COMMENT: temporary test for show booster button
-        for (int i = 0; i < 10; i += 2) {
-            Vaccine v = new Vaccine("Chickenpox", "2021-01-01", true);
-            vaccineProfile1.addVaccine(v);
-        }
+//        for (int i = 0; i < 10; i += 2) {
+//            Vaccine v = new Vaccine("Chickenpox", "2021-01-01", true);
+//            vaccineProfile1.addVaccine(v);
+//        }
 
     }
 
@@ -217,7 +217,7 @@ public class VaccineApp {
     }
 
     // EFFECTS: saves the Vaccine Profile to file
-    private void saveVaccineProfile() {
+    public void saveVaccineProfile() {
         try {
             jsonWriter.open();
             jsonWriter.write(vaccineProfile1);
@@ -230,7 +230,7 @@ public class VaccineApp {
 
     // MODIFIES: this
     // EFFECTS: loads vaccine profile from file
-    private void loadVaccineProfile() {
+    public void loadVaccineProfile() {
         try {
             vaccineProfile1 = jsonReader.read();
             System.out.println("Loaded " + vaccineProfile1.getProfileName() + " from " + JSON_STORE);

@@ -36,8 +36,8 @@ public class GUI extends JFrame implements ActionListener {
         setupBtn5(); // add shingles vaccine button
         setupBtn6(); // add chickenpox vaccine button
         setupBtn7(); // show call vaccine(s) button
-//        setupBtn8(); // save profile button
-//        setupBtn9(); // load profile button
+        setupBtn8(); // save profile button
+        setupBtn9(); // load profile button
 
         label = new JLabel("Status", SwingConstants.CENTER);
         field = new JTextArea();
@@ -105,7 +105,7 @@ public class GUI extends JFrame implements ActionListener {
     // COMMENT: made this helper function to fix checkstyle limit of 27 lines in GUI  method
     public void setupBtn6() {
         JButton btn3 = new JButton("Add Chickenpox Vaccine");
-        btn3.setActionCommand("Add MMR Vaccine");
+        btn3.setActionCommand("Add Chickenpox Vaccine");
         btn3.addActionListener(this);
         add(btn3);
         btn3.setBounds(140, 120, 200, 20);
@@ -121,40 +121,97 @@ public class GUI extends JFrame implements ActionListener {
         btn3.setBounds(140, 140, 200, 20);
     }
 
+    // EFFECTS: Constructs button 8 - save profile
+    // COMMENT: made this helper function to fix checkstyle limit of 27 lines in GUI  method
+    public void setupBtn8() {
+        JButton btn3 = new JButton("Save Profile");
+        btn3.setActionCommand("Save Profile");
+        btn3.addActionListener(this);
+        add(btn3);
+        btn3.setBounds(140, 160, 200, 20);
+    }
+
+    // EFFECTS: Constructs button 9 - load profile
+    // COMMENT: made this helper function to fix checkstyle limit of 27 lines in GUI  method
+    public void setupBtn9() {
+        JButton btn3 = new JButton("Load Profile");
+        btn3.setActionCommand("Load Profile");
+        btn3.addActionListener(this);
+        add(btn3);
+        btn3.setBounds(140, 180, 200, 20);
+    }
+
+
     //REQUIRES: Action Event
     //EFFECTS: This is the method that is called when the the JButtons are clicked
     // function is to filter list of vaccines and show ones needing boosters
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Show Booster Vaccines")) {
             actionCommandBooster();
-
         } else if ((e.getActionCommand().equals("Add COVID-19 Vaccine"))) {
             actionCommandCovid();
         } else if ((e.getActionCommand().equals("Add MMR Vaccine"))) {
-            app.addMmrVaccine();
-            label.setText("Status: MMR Vaccine added to your profile");
+            actionCommandMmr();
         } else if ((e.getActionCommand().equals("Add Tetanus Vaccine"))) {
-            app.addTetanusVaccine();
-            label.setText("Status: Tetanus Vaccine added to your profile");
+            actionCommandTetanus();
         } else if ((e.getActionCommand().equals("Add Shingles Vaccine"))) {
-            app.addShinglesVaccine();
-            label.setText("Status: Shingles Vaccine added to your profile");
+            actionCommandShingles();
         } else if ((e.getActionCommand().equals("Add Chickenpox Vaccine"))) {
-            app.addChickenpoxVaccine();
-            label.setText("Status: Chickenpox Vaccine added to your profile");
+            actionCommandPox();
         } else if ((e.getActionCommand().equals("Show all vaccines"))) {
-            app.showAllVaccines();
-            label.setText("Status: All vaccines in profile shown");
+            actionCommandShowAll();
+        } else if ((e.getActionCommand().equals("Save Profile"))) {
+            app.saveVaccineProfile();
+            label.setText("Status: Profile Saved");
+        } else if ((e.getActionCommand().equals("Load Profile"))) {
+            app.loadVaccineProfile();
+            label.setText("Status: Profile Loaded");
         }
 
     }
+
+    //EFFECT: implements action for show all button
+    // COMMENT: Helper function to reduce max line limit checkstyle error
+    public void actionCommandShowAll() {
+        app.showAllVaccines();
+        label.setText("Status: All vaccines in profile shown");
+    }
+
+    //EFFECT: implements action for add chicken pox button
+    // COMMENT: Helper function to reduce max line limit checkstyle error
+    public void actionCommandPox() {
+        app.addChickenpoxVaccine();
+        label.setText("Status: Chickenpox Vaccine added to your profile");
+    }
+
+    //EFFECT: implements action for add mmr button
+    // COMMENT: Helper function to reduce max line limit checkstyle error
+    public void actionCommandMmr() {
+        app.addMmrVaccine();
+        label.setText("Status: MMR Vaccine added to your profile");
+    }
+
+    //EFFECT: implements action for add tetanus button
+    // COMMENT: Helper function to reduce max line limit checkstyle error
+    public void actionCommandTetanus() {
+        app.addTetanusVaccine();
+        label.setText("Status: Tetanus Vaccine added to your profile");
+    }
+
+    //EFFECT: implements action for add shingles button
+    // COMMENT: Helper function to reduce max line limit checkstyle error
+    public void actionCommandShingles() {
+        app.addShinglesVaccine();
+        label.setText("Status: Shingles Vaccine added to your profile");
+    }
+
 
     //EFFECT: implements action for show booster button
     // COMMENT: Helper function to reduce max line limit checkstyle error
     public void actionCommandBooster() {
         try {
             app.filterBoosterVaccines();
-            label.setText("Status: Here are the vaccines that need booster shots");
+            label.setText("Status: Vaccine(s) in your profile that need booster shots");
         } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
             unsupportedAudioFileException.printStackTrace();
         } catch (IOException ioException) {
