@@ -84,6 +84,8 @@ public class VaccineApp {
 
     }
 
+
+
     //EFFECT: Adds COVID-19 Vaccine to vaccine Profile - For graphical interface
     public void addCovidVaccine() {
         addVaccineToProfile(covid19);

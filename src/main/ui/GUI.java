@@ -29,8 +29,8 @@ public class GUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(600, 600));
         ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
-        initilizeAddBtns();
-        initilizeRemoveBtns();
+        initializeAddButtons();
+        initializeRemoveButtons();
         label = new JLabel("Status", SwingConstants.CENTER);
         field = new JTextArea();
         field.setPreferredSize(new Dimension(20, 20));
@@ -43,7 +43,8 @@ public class GUI extends JFrame implements ActionListener {
         setResizable(false);
     }
 
-    public void initilizeRemoveBtns() {
+    //EFFECTS: sets up remove buttons
+    public void initializeRemoveButtons() {
         setupBtn("Remove COVID-19 Vaccine", 350, 40, 200, 20);
         setupBtn("Remove MMR Vaccine", 350, 60, 200, 20);
         setupBtn("Remove Tetanus Vaccine", 350, 80, 200, 20);
@@ -51,7 +52,10 @@ public class GUI extends JFrame implements ActionListener {
         setupBtn("Remove Chickenpox Vaccine", 350, 120, 200, 20);
     }
 
-    public void initilizeAddBtns() {
+
+
+    //EFFECTS: sets up add buttons
+    public void initializeAddButtons() {
         setupBtn1(); // show booster vaccine(s) button
         setupBtn2(); // add covid-19 vaccine button
         setupBtn3(); // add mmr vaccine button
@@ -63,7 +67,9 @@ public class GUI extends JFrame implements ActionListener {
         setupBtn9(); // load profile button
     }
 
-
+    //REQUIRES: desired command for button and bounds for desired button
+    //EFFECTS: creates a button for the GUI, setting up commands and position
+    //COMMENT: Created this method after realizing it is inefficent to make separate setupBtn# methods
     public void setupBtn(String command, int x, int y, int w, int h) {
         JButton btn10 = new JButton(command);
         btn10.setActionCommand(command);
@@ -173,6 +179,8 @@ public class GUI extends JFrame implements ActionListener {
         removeAction(e);
     }
 
+    //REQUIRES Action event
+    //EFFECTS provides remove vaccine methods when respective JButton is clicked
     public void removeAction(ActionEvent e) {
         if ((e.getActionCommand().equals("Remove COVID-19 Vaccine"))) {
             app.removeCovidVaccine();
@@ -196,6 +204,8 @@ public class GUI extends JFrame implements ActionListener {
 
     }
 
+    //REQUIRES Action event
+    //EFFECTS provides add vaccine methods when respective JButton is clicked
     private void addAction(ActionEvent e) {
         if (e.getActionCommand().equals("Show Booster Vaccines")) {
             actionCommandBooster();
