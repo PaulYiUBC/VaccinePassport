@@ -114,6 +114,36 @@ public class VaccineApp {
         gui.updateField(vaccineProfile1.filterNormalProfile());
     }
 
+    //EFFECT: Removes COVID-19 Vaccine to vaccine Profile - For graphical interface
+    public void removeCovidVaccine() {
+        removeVaccineFromProfile(covid19);
+        gui.updateField(vaccineProfile1.filterNormalProfile());
+    }
+
+    //EFFECT: Removes MMR Vaccine to vaccine Profile - For graphical interface
+    public void removeMmrVaccine() {
+        removeVaccineFromProfile(mmr);
+        gui.updateField(vaccineProfile1.filterNormalProfile());
+    }
+
+    //EFFECT: Removes Tetanus Vaccine to vaccine Profile - For graphical interface
+    public void removeTetanusVaccine() {
+        removeVaccineFromProfile(tetanus);
+        gui.updateField(vaccineProfile1.filterNormalProfile());
+    }
+
+    //EFFECT: Removes Shingles Vaccine to vaccine Profile - For graphical interface
+    public void removeShinglesVaccine() {
+        removeVaccineFromProfile(shingles);
+        gui.updateField(vaccineProfile1.filterNormalProfile());
+    }
+
+    //EFFECT: Removes Chickenpox Vaccine to vaccine Profile - For graphical interface
+    public void removeChickenpoxVaccine() {
+        removeVaccineFromProfile(chickenpox);
+        gui.updateField(vaccineProfile1.filterNormalProfile());
+    }
+
     //EFFECT: Shows all vaccines in profile - For graphical interface
     public void showAllVaccines() {
         gui.updateField(vaccineProfile1.filterNormalProfile());
@@ -128,49 +158,49 @@ public class VaccineApp {
         vaccineProfile1.addVaccine(v);
 
     }
+//
+//    //MODIFIES: this
+//    //EFFECTS: processes user input
+//    private void runVaccineApp() {
+//        boolean keepGoing = true;
+//        String command = null;
+//        input = new Scanner(System.in);
+//
+////        initVaccineProfiles();
+//        initVaccines();
+//
+//        while (keepGoing) {
+//            displayMenu();
+//            command = input.next();
+//            command = command.toLowerCase();
+//
+//            if (command.equals("q")) {
+//                keepGoing = false;
+//            } else {
+//                processCommand(command);
+//            }
+//        }
+//
+//        System.out.println("\nGoodbye!");
+//    }
 
-    //MODIFIES: this
-    //EFFECTS: processes user input
-    private void runVaccineApp() {
-        boolean keepGoing = true;
-        String command = null;
-        input = new Scanner(System.in);
-
-//        initVaccineProfiles();
-        initVaccines();
-
-        while (keepGoing) {
-            displayMenu();
-            command = input.next();
-            command = command.toLowerCase();
-
-            if (command.equals("q")) {
-                keepGoing = false;
-            } else {
-                processCommand(command);
-            }
-        }
-
-        System.out.println("\nGoodbye!");
-    }
-
-    //MODIFIES: this
-    //EFFECTS: processes user command
-    private void processCommand(String command) {
-        if (command.equals("v")) {
-            selectVaccine();
-        } else if (command.equals("r")) {
-            removeVaccine();
-        } else if (command.equals("s")) {
-            saveVaccineProfile();
-        } else if (command.equals("l")) {
-            loadVaccineProfile();
-        } else if (command.equals("p")) {
-            printVaccines();
-        } else {
-            System.out.println("Selection not valid...");
-        }
-    }
+//    //MODIFIES: this
+//    //EFFECTS: processes user command
+//    private void processCommand(String command) {
+//        if (command.equals("v")) {
+//            selectVaccine();
+//        } else if (command.equals("r")) {
+//            removeVaccine();
+//        } else if (command.equals("s")) {
+//            saveVaccineProfile();
+//        } else if (command.equals("l")) {
+//            loadVaccineProfile();
+//        } else if (command.equals("p")) {
+//            printVaccines();
+//        } else {
+//            System.out.println("Selection not valid...");
+//        }
+//    }
 
     //REQUIRES: Vaccine parameter
     //MODIFIES: this
@@ -183,7 +213,7 @@ public class VaccineApp {
 
     //MODIFIES: this
     //EFFECTS: initializes vaccine
-    private void initVaccines() {
+    public void initVaccines() {
         covid19 = new Vaccine("COVID-19", "2021-05-05", true);
         mmr = new Vaccine("MMR", "2001-01-01", false);
         tetanus = new Vaccine("Tetanus", "1999-09-09", true);
@@ -265,31 +295,31 @@ public class VaccineApp {
             addVaccineToProfile(shingles);
         }
     }
-
-    // EFFECTS: prompts user to select COVID-19 OR MMR OR Tetanus vaccine to add to profile
-    private void removeVaccine() {
-        String selection = "";  // force entry into loop
-
-        System.out.println("c for COVID-19 Vaccine");
-        System.out.println("m for MMR Vaccine");
-        System.out.println("t for Tetanus Vaccine");
-        System.out.println("s for Shingles Vaccine");
-        selection = input.next();
-        selection = selection.toLowerCase();
-
-        if (selection.equals("c")) {
-            removeVaccineFromProfile(covid19);
-        }
-        if (selection.equals("m")) {
-            removeVaccineFromProfile(mmr);
-        }
-        if (selection.equals("t")) {
-            removeVaccineFromProfile(tetanus);
-        }
-        if (selection.equals("s")) {
-            removeVaccineFromProfile(shingles);
-        }
-    }
+//
+//    // EFFECTS: prompts user to select COVID-19 OR MMR OR Tetanus vaccine to add to profile
+//    private void removeVaccine() {
+//        String selection = "";  // force entry into loop
+//
+//        System.out.println("c for COVID-19 Vaccine");
+//        System.out.println("m for MMR Vaccine");
+//        System.out.println("t for Tetanus Vaccine");
+//        System.out.println("s for Shingles Vaccine");
+//        selection = input.next();
+//        selection = selection.toLowerCase();
+//
+//        if (selection.equals("c")) {
+//            removeVaccineFromProfile(covid19);
+//        }
+//        if (selection.equals("m")) {
+//            removeVaccineFromProfile(mmr);
+//        }
+//        if (selection.equals("t")) {
+//            removeVaccineFromProfile(tetanus);
+//        }
+//        if (selection.equals("s")) {
+//            removeVaccineFromProfile(shingles);
+//        }
+//    }
 }
 
 
