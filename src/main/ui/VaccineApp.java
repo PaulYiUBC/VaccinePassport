@@ -18,6 +18,7 @@ public class VaccineApp {
     private Vaccine covid19;
     private Vaccine mmr;
     private Vaccine tetanus;
+    private Vaccine shingles;
     private VaccineProfile vaccineProfile;
     private Scanner input;
     private JsonWriter jsonWriter;
@@ -93,6 +94,8 @@ public class VaccineApp {
         covid19 = new Vaccine("COVID-19", "2021-05-05", true);
         mmr = new Vaccine("MMR", "2001-01-01", false);
         tetanus = new Vaccine("Tetanus", "1999-09-09", true);
+        shingles = new Vaccine("Shingles", "2020-02-02", false);
+
         input = new Scanner(System.in);
     }
 
@@ -166,6 +169,7 @@ public class VaccineApp {
         System.out.println("c for COVID-19 Vaccine");
         System.out.println("m for MMR Vaccine");
         System.out.println("t for Tetanus Vaccine");
+        System.out.println("s for Shingles Vaccine");
         selection = input.next();
         selection = selection.toLowerCase();
 
@@ -179,15 +183,19 @@ public class VaccineApp {
         if (selection.equals("t")) {
             addVaccineToProfile(tetanus);
         }
+        if (selection.equals("s")) {
+            addVaccineToProfile(shingles);
+        }
     }
 
     // EFFECTS: prompts user to select COVID-19 OR MMR OR Tetanus vaccine to add to profile
     private void removeVaccine() {
         String selection = "";  // force entry into loop
 
-        System.out.println("c for COVID-19");
-        System.out.println("m for MMR");
+        System.out.println("c for COVID-19 Vaccine");
+        System.out.println("m for MMR Vaccine");
         System.out.println("t for Tetanus Vaccine");
+        System.out.println("s for Shingles Vaccine");
         selection = input.next();
         selection = selection.toLowerCase();
 
@@ -200,7 +208,9 @@ public class VaccineApp {
         if (selection.equals("t")) {
             removeVaccineFromProfile(tetanus);
         }
-
+        if (selection.equals("s")) {
+            removeVaccineFromProfile(shingles);
+        }
     }
 
 
