@@ -65,7 +65,7 @@ Option: Make use of bi-directional association
 - However, as I started coding, I realized that the VaccineApp class needed new methods to pass along the processed info
 - The GUI class add VaccineApp class are called to each other in the Main class establishing the initial relationship
 - This lets me call on VaccineApp methods in the GUI class; and vice versa
-- This helped me send information from one class to the other without duplicating the class fields
+- This helped me send information from one class to the other
 - For example, I can process the latest list of vaccine in VaccineApp then send that information to the GUI class..
 ... so it can be turned into a list of strings and then inputted into JFrame text food. 
 
@@ -73,6 +73,8 @@ Option: Make use of bi-directional association
 ## Phase 4: Task 3
 
 **Reflections**
+
+
 
 
 
