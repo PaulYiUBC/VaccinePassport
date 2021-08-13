@@ -43,6 +43,13 @@ public class GUI extends JFrame implements ActionListener {
         setResizable(false);
     }
 
+    //REQUIRES: Vaccine app
+//EFFECTS: sets up the functionality of the vaccine app to use in the graphical interface
+    public void setApp(VaccineApp app) {
+        this.app = app;
+
+    }
+
     //EFFECTS: sets up remove buttons
     public void initializeRemoveButtons() {
         setupBtn("Remove COVID-19 Vaccine", 350, 40, 200, 20);
@@ -69,7 +76,7 @@ public class GUI extends JFrame implements ActionListener {
 
     //REQUIRES: desired command for button and bounds for desired button
     //EFFECTS: creates a button for the GUI, setting up commands and position
-    //COMMENT: Created this method after realizing it is inefficent to make separate setupBtn# methods
+    //COMMENT: Created this method after realizing it is inefficient to make separate setupBtn# methods
     public void setupBtn(String command, int x, int y, int w, int h) {
         JButton btn10 = new JButton(command);
         btn10.setActionCommand(command);
@@ -79,7 +86,7 @@ public class GUI extends JFrame implements ActionListener {
     }
 
 
-    // EFFECTS: Constructs button 1 - Show Booster Vacines
+    // EFFECTS: Constructs button 1 - Show Booster Vaccines
     // COMMENT: made this helper function to fix checkstyle limit of 27 lines in GUI  method
     public void setupBtn1() {
         JButton btn1 = new JButton("Show Booster Vaccines");
@@ -290,12 +297,7 @@ public class GUI extends JFrame implements ActionListener {
     }
 
 
-    //REQUIRES: Vaccine app
-//EFFECTS: sets up the functionality of the vaccine app to use in the graphical interface
-    public void setApp(VaccineApp app) {
-        this.app = app;
 
-    }
 
     //REQUIRES: vaccine profile
 //EFFECTS: provides updated list of vaccine names in profile

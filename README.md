@@ -44,11 +44,35 @@
 
 ## Phase 3
 
-**Due to time contraints, I needed to narrow the scope of my user stories**
+**Due to time constraints, I needed to narrow the scope of my user stories**
 
 - As a user, I want to add listed vaccinations to my vaccine profile
 - As a user, I want to remove listed vaccinations from my vaccine profile
-- As a user, I want to only show vaccinations that require a booster shot
+- As a user, I want to only show vaccinations that require a booster shot with a confirmation sound
 - As a user, I want to be able to save my vaccine profile to file
 - As a user, I want to able to load my vaccine profile from file
+- As a user, I want to see all vaccines in my profile
+
+
+## Phase 4: Task 2
+
+Option: Make use of bi-directional association
+
+- I used a bi-direction association between the GUI class and VaccineApp
+- I had used this relationship to try to keep the graphical interface methods separate from the vaccine app methods
+- Initially, I thought if I could keep the same functionalities from the console UI (Phase 2) then I would only...
+... need to create a GUI class - leaving the VaccineApp class untouched
+- However, as I started coding, I realized that the VaccineApp class needed new methods to pass along the processed info
+- The GUI class add VaccineApp class are called to each other in the Main class establishing the initial relationship
+- This lets me call on VaccineApp methods in the GUI class; and vice versa
+- This helped me send information from one class to the other without duplicating the class fields
+- For example, I can process the latest list of vaccine in VaccineApp then send that information to the GUI class..
+... so it can be turned into a list of strings and then inputted into JFrame text food. 
+
+
+## Phase 4: Task 3
+
+**Reflections**
+
+
 
