@@ -73,6 +73,11 @@ Option: Make use of bi-directional association
 ## Phase 4: Task 3
 
 **Reflections**
+- I should have utilitized more interfaces to reduce repeated code in the many methods
+- I feel my app is too simple; I should have made an interface or abstract class of Vaccine..
+... then create different kinds of vaccines such as boosters, viral vaccine, bacterial vaccine, etc
+-Though I made a bidirectional association with GUI and VaccineApp, I feel it vioaltes the...
+... the coupling design rule; it would result in development errors 
 
 
 
